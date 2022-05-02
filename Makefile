@@ -4,4 +4,7 @@ cart:
 catalogue:
 	@bash components/catalogue.sh
 
+shipping:
+	@bash components/user.sh
+
 
