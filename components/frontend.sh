@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
 
-User_ID=$(id -u)
-
-if [ "$USER_ID" -ne 0 ]; then
-  echo You are suppose to be running as suddo or root user
-else
-
  yum install nginx -y
  systemctl enable nginx
  systemctl start nginx
@@ -19,7 +13,6 @@ else
  rm -rf frontend-main README.md
  mv localhost.conf /etc/nginx/default.d/roboshop.conf
  systemctl restart nginx
-fi
 
 
  
