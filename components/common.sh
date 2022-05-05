@@ -9,3 +9,13 @@ else
   fi
 }
 
+checkStatus() {
+
+  if [ $? -eq 0 ]; then
+  echo -e"\e[35mSUCCESS\e[0m"
+else
+  echo echo -e"\e[31mFAILURE\e[0m"
+  exit 1
+fi
+
+}
