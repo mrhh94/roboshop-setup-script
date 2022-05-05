@@ -20,5 +20,5 @@ fi
 
 }
 
-LOG_FILE = /tmp/roboshop.log
+LOG_FILE=/tmp/roboshop.log
 rm -f $LOG_FILE
