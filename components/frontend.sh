@@ -8,7 +8,7 @@ checkRootUser                     &>>${LOG_FILE}
  checkStatus $?
 
  ECHO "Downloading frontend code files"
- cur -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip"    >>${LOG_FILE}
+ cur -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip"    &>>${LOG_FILE}
  checkStatus $?
 
  cd /usr/share/nginx/html         &>>${LOG_FILE}
