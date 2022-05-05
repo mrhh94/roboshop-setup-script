@@ -15,7 +15,7 @@ checkStatus() {
   echo -e "\e[35mSUCCESS\e[0m"
 else
   echo -e "\e[31mFAILURE\e[0m"
-  echo "\e[35mplease check the ${LOG_FILE}\e[0m"
+  echo -e "\e[35mplease check the ${LOG_FILE}\e[0m"
   exit 1
 fi
 
