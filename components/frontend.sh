@@ -1,37 +1,37 @@
 #!/usr/bin/env bash
 
 source components/common.sh
-checkRootUser           >/tmp/roboshop.log
+checkRootUser           >>${LOG_FILE}
 
  echo "Installing nginx"
- yum install nginx -y             >/tmp/roboshop.log
+ yum install nginx -y             >>${LOG_FILE}
  checkStatus $?
 
  echo "Downloading frontend code files"
- curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip"    >/tmp/roboshop.log
+ curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip"    >>${LOG_FILE}
  checkStatus $?
 
- cd /usr/share/nginx/html         >/tmp/roboshop.log
+ cd /usr/share/nginx/html         >>${LOG_FILE}
 
- echo "removing old files"
- rm -rf *                         >/tmp/roboshop.log
+ echo "Removing old files"
+ rm -rf *                         >>${LOG_FILE}
  checkStatus $?
 
- echo "unzipping frontend file"
- unzip /tmp/frontend.zip          >/tmp/roboshop.log
+ echo "Unzipping frontend file"
+ unzip /tmp/frontend.zip          >>${LOG_FILE}
  checkStatus $?
 
- echo "moving extracted files to other folder"
- mv frontend-main/* .             >/tmp/roboshop.log
- mv static/* .                    >/tmp/roboshop.log
- rm -rf frontend-main README.md   >/tmp/roboshop.log
+ echo "Moving extracted files to other folder"
+ mv frontend-main/* .             >>${LOG_FILE}
+ mv static/* .                    >>${LOG_FILE}
+ rm -rf frontend-main README.md   >>${LOG_FILE}
  mv localhost.conf /etc/nginx/default.d/roboshop.conf    >/tmp/roboshop.log
  checkStatus $?
 
- echo "enabling nginx"
- systemctl enable nginx           >/tmp/roboshop.log
- systemctl start nginx            >/tmp/roboshop.log
- systemctl restart nginx          >/tmp/roboshop.log
+ echo "Enabling/Starting nginx"
+ systemctl enable nginx           >>${LOG_FILE}
+ systemctl start nginx            >>${LOG_FILE}
+ systemctl restart nginx          >>${LOG_FILE}
  checkStatus $?
 
  
