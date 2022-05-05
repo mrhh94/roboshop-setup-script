@@ -22,16 +22,12 @@ checkRootUser                     &>>${LOG_FILE}
  checkStatus $?
 
  ECHO "Moving extracted files to other folder"
- mv frontend-main/* .             &>>${LOG_FILE}
- mv static/* .                    &>>${LOG_FILE}
- rm -rf frontend-main README.md   &>>${LOG_FILE}
+ mv frontend-main/* .   && mv static/* .   && rm -rf frontend-main README.md   &>>${LOG_FILE}
  mv localhost.conf /etc/nginx/default.d/roboshop.conf    >/tmp/roboshop.log
  checkStatus $?
 
  ECHO "Enabling/Starting nginx"
- systemctl enable nginx           &>>${LOG_FILE}
- systemctl start nginx            &>>${LOG_FILE}
- systemctl restart nginx          &>>${LOG_FILE}
+ systemctl enable nginx   &>>${LOG_FILE}    && systemctl start nginx    &>>${LOG_FILE} &&   systemctl restart nginx   &>>${LOG_FILE}
  checkStatus $?
 
  
