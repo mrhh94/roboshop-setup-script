@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-sousource components/common.sh
+source components/common.sh
 checkRootUser
 
  yum install nginx -y   >/tmp/roboshop.log
