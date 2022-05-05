@@ -22,3 +22,8 @@ fi
 
 LOG_FILE=/tmp/robo.log
 rm -f $LOG_FILE
+
+ECHO(){
+  echo "==================== $1 ====================" >>${LOG_FILE}
+  echo "$1"
+}

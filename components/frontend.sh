@@ -3,32 +3,32 @@
 source components/common.sh
 checkRootUser                     >>${LOG_FILE}
 
- echo "Installing nginx"
+ ECHO "Installing nginx"
  yum install nginx -y             >>${LOG_FILE}
  checkStatus $?
 
- echo "Downloading frontend code files"
+ ECHO "Downloading frontend code files"
  curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip"    >>${LOG_FILE}
  checkStatus $?
 
  cd /usr/share/nginx/html         >>${LOG_FILE}
 
- echo "Removing old files"
+ ECHO "Removing old files"
  rm -rf *                         >>${LOG_FILE}
  checkStatus $?
 
- echo "Unzipping frontend file"
+ ECHO "Unzipping frontend file"
  unzip /tmp/frontend.zip          >>${LOG_FILE}
  checkStatus $?
 
- echo "Moving extracted files to other folder"
+ ECHO "Moving extracted files to other folder"
  mv frontend-main/* .             >>${LOG_FILE}
  mv static/* .                    >>${LOG_FILE}
  rm -rf frontend-main README.md   >>${LOG_FILE}
  mv localhost.conf /etc/nginx/default.d/roboshop.conf    >/tmp/roboshop.log
  checkStatus $?
 
- echo "Enabling/Starting nginx"
+ ECHO "Enabling/Starting nginx"
  systemctl enable nginx           >>${LOG_FILE}
  systemctl start nginx            >>${LOG_FILE}
  systemctl restart nginx          >>${LOG_FILE}
