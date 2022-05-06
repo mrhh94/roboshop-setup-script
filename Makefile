@@ -9,3 +9,6 @@ frontend:
 
 user:
 	@bash components/user.sh
+
+create-instance:
+	@bash components/create-instance.sh
