@@ -7,6 +7,8 @@ fi
 
 NAME=$1
 
+#aws ec2 describe-instances --filters "Name=tag:Name,Values=frontend Name=state,Values=active"
+
 AMI_ID=$(
   aws ec2 describe-images \
       --filters "Name=name,Values=Centos-7-DevOps-Practice" \
