@@ -1,0 +1,14 @@
+ #--tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${NAME}}]"
+
+    #MarketType=string,SpotOptions={MaxPrice=string,SpotInstanceType=string,BlockDurationMinutes=integer,ValidUntil=timestamp,InstanceInterruptionBehavior=string}
+
+   # {
+   #   "MarketType": "spot",
+   #   "SpotOptions": {
+   #     "MaxPrice": "string",
+   #     "SpotInstanceType": "one-time"|"persistent",
+   #     "BlockDurationMinutes": integer,
+   #     "ValidUntil": timestamp,
+   #     "InstanceInterruptionBehavior": "hibernate"|"stop"|"terminate"
+   #   }
+   # }
