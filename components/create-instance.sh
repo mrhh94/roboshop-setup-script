@@ -7,7 +7,12 @@ fi
 
 NAME=$1
 
-#aws ec2 describe-instances --filters "Name=tag:Name,Values=frontend Name=state,Values=active"
+#aws ec2 describe-instances --filters Name=tag:Name,Values=test1 Name=state,Values=active
+sudo aws ec2 describe-instances --filters Name=tag:Name,Values=${NAME} --output table | grep 'InstanceId' | awk '{print $4}'
+if [ $1 -eq 0 ]; then
+  echo "Instance Already Exists"
+  exit 0
+fi
 
 AMI_ID=$(
   aws ec2 describe-images \
@@ -22,6 +27,3 @@ aws ec2 run-instances \
     --subnet-id subnet-550b0a18 \
     --security-group-ids sg-0cfbae2747cbac51a \
     --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${NAME}}]"
-
-
-
