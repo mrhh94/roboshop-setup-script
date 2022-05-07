@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-if [ -z "$?" ]; then
+if [ -z "$1" ]; then
   echo "Instance argument required"
   exit 1
 fi
 
-NAME=$?
+NAME=$1
 
 AMI_ID=$(
   aws ec2 describe-images \
