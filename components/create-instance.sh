@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [ -z "$1" ]; then
-  ech "Instance argument required"
+  echo "Instance argument required"
   exit 1
 fi
 
