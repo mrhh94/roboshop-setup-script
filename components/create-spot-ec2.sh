@@ -1,13 +1,7 @@
 #!/usr/bin/env bash
 
-AMI_ID=$(
-  aws ec2 describe-images \
-      --filters "Name=name,Values=Centos-7-DevOps-Practice" \
-      --output table | grep ImageId | awk '{print $4}'
-)
-
 aws ec2 run-instances \
-    --image-id "${AMI_ID}" \
+    --image-id ami-0bb6af715826253bf \
     --instance-type t2.micro \
     --count 1 \
     --subnet-id subnet-550b0a18 \
