@@ -12,5 +12,5 @@ aws ec2 run-instances \
     --count 1 \
     --subnet-id subnet-550b0a18 \
     --security-group-ids sg-0cfbae2747cbac51a \
-    --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=}]'
+    --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=New}]'
 
