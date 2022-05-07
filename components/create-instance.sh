@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+source components/common.sh
+
 if [ -z "$1" ]; then
   echo "Instance argument required"
   exit 1
