@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-AMI_ID=(
+AMI_ID=$(
   aws ec2 describe-images \
       --filters "Name=name,Values=Centos-7-DevOps-Practice" \
       --output table | grep ImageId | awk '{print $4}'
