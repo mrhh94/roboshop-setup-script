@@ -16,6 +16,7 @@ if [ $? -ne 0 ]; then
   ECHO "Add Application User"
   useradd roboshop    #&>>${LOG_FILE}
   checkStatus $?
+  exit 0
 fi
 
 ECHO "Download Application"
@@ -23,5 +24,5 @@ curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/cat
 
 
 ECHO "Extract Application Archive"
-cd /home/roboshop && rm -f catalogue && unzip -o /tmp/catalogue.zip && mv catalogue-main catalogue
+cd /home/roboshop && rm -rf catalogue && unzip -o /tmp/catalogue.zip && mv catalogue-main catalogue
 checkStatus $?
