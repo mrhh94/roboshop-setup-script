@@ -45,5 +45,5 @@ sed -e "s/COMPONENT/${NAME}/" -e "s/IPADDRESS/${IPADDRESS}/" record.json >/tmp/r
 
 aws route53 change-resource-record-sets \
     --hosted-zone-id Z050212011DFLHIMYY41B \
-    --change-batch file:///tmp/record.json &>/dev/null
+    --change-batch file:///tmp/record.json &>>/dev/null
 echo "DNS Record Created"
