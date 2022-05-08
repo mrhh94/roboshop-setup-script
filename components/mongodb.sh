@@ -14,7 +14,9 @@ sed -i 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf      &>>${LOG_FILE}
 checkStatus $?
 
 ECHO "Unzipping Files"
-curl -s -L -o /tmp/mongodb.zip "https://github.com/roboshop-devops-project/mongodb/archive/main.zip" &>>${LOG_FILE}
+#curl -s -L -o /tmp/mongodb.zip "https://github.com/roboshop-devops-project/mongodb/archive/main.zip" &>>${LOG_FILE}
+curl -s -L -o /tmp/mongodb.zip "https://github.com/roboshop-devops-project/mongodb/archive/main.zip" &&
+
 cd /tmp
 unzip mongodb.zip   &>>${LOG_FILE}
 checkStatus $?
