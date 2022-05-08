@@ -31,3 +31,8 @@ ECHO "Installing NPM"
 cd /home/roboshop/catalogue && npm install  &>>${LOG_FILE}
 checkStatus $?
 
+ECHO "Updating SystemD file "
+sed -i -e '/MONGO_DNSNAME/mongodb.roboshop.internal/' /home/roboshop/catalogue/systemd.service
+checkStatus $?
+
+
