@@ -30,4 +30,5 @@ mongo < users.js        &>>${LOG_FILE}
 
 systemctl restart mongod            &>>${LOG_FILE}
 
-ECHO " MongoDB Started Successfully"
+ECHO "MongoDB Started Successfully"
+
