@@ -32,7 +32,7 @@ aws ec2 run-instances \
     --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${NAME}}]" &>>/dev/nul2.0
     echo "Successfully ${NAME} Instance Created"
 
-Sleep 15
+sleep 15
 
 INSTANCE_ID=$(aws ec2 describe-instances \
     --filters Name=tag:Name,Values="${NAME}" \
