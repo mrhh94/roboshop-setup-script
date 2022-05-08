@@ -12,9 +12,9 @@ yum install -y mongodb-org          &>>${LOG_FILE}
 systemctl enable mongod             &>>${LOG_FILE}
 ECHO "MongoDB Installed"
 
-sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf      &>>${LOG_FILE}
+sed -i 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf      &>>${LOG_FILE}
 
-systemctl restart mongod            &>>${LOG_FILE}
+systemctl start mongod            &>>${LOG_FILE}
 
 ECHO "Unzipping Files"
 curl -s -L -o /tmp/mongodb.zip "https://github.com/roboshop-devops-project/mongodb/archive/main.zip" &>>${LOG_FILE}
