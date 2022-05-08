@@ -28,6 +28,6 @@ cd /home/roboshop && rm -rf catalogue && unzip -o /tmp/catalogue.zip &>>${LOG_FI
 checkStatus $?
 
 ECHO "Installing NPM"
-cd /home/roboshop/catalogue && npm install
+cd /home/roboshop/catalogue && npm install  &>>${LOG_FILE}
 checkStatus $?
 
