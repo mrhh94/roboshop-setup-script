@@ -26,3 +26,5 @@ checkStatus $?
 ECHO "Extract Application Archive"
 cd /home/roboshop && rm -rf catalogue && unzip -o /tmp/catalogue.zip &>>${LOG_FILE} && mv catalogue-main catalogue
 checkStatus $?
+
+cd /home/roboshop/catalogue && npm install
