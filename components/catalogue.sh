@@ -25,6 +25,6 @@ curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/cat
 ECHO "Extract Application Archive"
 cd /home/roboshop
 unzip /tmp/catalogue.zip
-$mv catalogue-main catalogue
+mv catalogue-main catalogue
 cd /home/roboshop/catalogue
 npm install
