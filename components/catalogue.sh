@@ -12,7 +12,7 @@ yum install nodejs gcc-c++ -y   &>>${LOG_FILE}
 checkStatus $?
 
 id roboshop #&>>${LOG_FILE}
-if [ $1 -eq 0 ]; then
+if [ $? -ne 0 ]; then
   ECHO "Add Application User"
   useradd roboshop    #&>>${LOG_FILE}
   checkStatus $?
