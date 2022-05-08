@@ -2,7 +2,7 @@
 
 source components/common.sh
 
-checkRootUser $?                    &>>${LOG_FILE}
+checkRootUser                 &>>${LOG_FILE}
 
 ECHO "Installing MongoDB"
 curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/roboshop-devops-project/mongodb/main/mongo.repo    &>>${LOG_FILE}
@@ -17,6 +17,7 @@ systemctl restart mongod
 
 ECHO "Unzipping Files"
 #curl -s -L -o /tmp/mongodb.zip "https://github.com/roboshop-devops-project/mongodb/archive/main.zip" &>>${LOG_FILE}
+curl -s -L -o /tmp/mongodb.zip "https://github.com/roboshop-devops-project/mongodb/archive/main.zip"  >>${LOG_FILE}
 curl -s -L -o /tmp/mongodb.zip "https://github.com/roboshop-devops-project/mongodb/archive/main.zip" &&
 
 cd /tmp
