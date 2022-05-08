@@ -12,3 +12,6 @@ user:
 
 create-instance:
 	@bash components/create-instance.sh
+
+create-mongodb:
+	@bash components/mongodb.sh

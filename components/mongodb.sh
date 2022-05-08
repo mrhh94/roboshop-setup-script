@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 source components/common.sh
+
 checkRootUser $1                     &>>${LOG_FILE}
 
 ECHO "Installing MongoDB"
