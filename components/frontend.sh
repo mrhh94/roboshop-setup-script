@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 source components/common.sh
-checkRootUser                     &>>${LOG_FILE}
+checkRootUser $?                  &>>${LOG_FILE}
 
  ECHO "Installing nginx"
  yum install nginx -y             &>>${LOG_FILE}

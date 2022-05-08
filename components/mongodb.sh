@@ -2,11 +2,11 @@
 
 source components/common.sh
 
-checkRootUser $1                     &>>${LOG_FILE}
+checkRootUser $?                    &>>${LOG_FILE}
 
 ECHO "Installing MongoDB"
 curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/roboshop-devops-project/mongodb/main/mongo.repo    &>>${LOG_FILE}
-checkRootUser $1                    &>>${LOG_FILE}
+checkRootUser $?                   &>>${LOG_FILE}
 yum install -y mongodb-org          &>>${LOG_FILE}
 systemctl enable mongod             &>>${LOG_FILE}
 ECHO "MongoDB Installed"
