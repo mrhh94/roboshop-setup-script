@@ -11,6 +11,11 @@ aws ec2 describe-spot-instance-requests \
     --filters Name=tag:Name,Values="${NAME}" Name=state,Values=active \
     --output table | grep InstanceId | awk '{print $5}' &>/dev/null
 
+if [ "$1" -eq 0 ]; then
+  echo "Instance Already Exists"
+  exit 0
+fi
+
 AMI_ID=$(
   aws ec2 describe-images \
       --filters "Name=name,Values=Centos-7-DevOps-Practice" \
