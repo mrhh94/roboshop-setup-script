@@ -31,3 +31,17 @@ aws ec2 run-instances \
     --security-group-ids sg-0cfbae2747cbac51a \
     --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${NAME}}]" &>>/dev/nul2.0
     echo "Successfully ${NAME} Instance Created"
+
+Sleep 15
+
+INSTANCE_ID=$(aws ec2 describe-instances \
+    --filters Name=tag:Name,Values="${NAME}" \
+    --output table | grep InstanceId | awk '{print $4}')
+
+IPADDRESS=$(aws ec2 describe-instances \
+    --instance-ids ${INSTANCE_ID} \
+    --output table | grep PrivateIpAddress | head -n 1 | awk '{print $4}')
+
+sed -e "s/COMPONENT/${NAME}/" -e "s/IPADDRESS/${IPADDRESS}" record.json >/tmp/record.json
+
+#aws route53 change-resource-record-sets --hosted-zone-id ZXXXXXXXXXX --change-batch file://sample.json
