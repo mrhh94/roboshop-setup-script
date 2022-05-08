@@ -10,7 +10,7 @@ NAME=$1
 #aws ec2 describe-instances --filters Name=tag:Name,Values=test1 Name=state,Values=active
 sudo aws ec2 describe-instances \
   --filters Name=tag:Name,Values=${NAME} \
-  --output table | grep 'InstanceId' | awk '{print $4}' &>/dev/nul2.0
+  --output table | grep 'InstanceId' | awk '{print $4}' &>>/dev/nul2.0
 
 if [ $? -eq 0 ]; then
   echo "Instance Already Exists"
