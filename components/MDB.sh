@@ -42,7 +42,7 @@ curl -s -L -o /tmp/mongodb.zip "https://github.com/roboshop-devops-project/mongo
 checkStatus $?
 
 ECHO "Load the Schema"
-cd /tmp && unzip -o mongodb.zip && cd mongodb-main && mongo < catalogue.js && mongo < users.js        &>>${LOG_FILE}
+cd /tmp && unzip -o mongodb.zip &>>${LOG_FILE} && cd mongodb-main && mongo < catalogue.js &>>${LOG_FILE} && mongo < users.js   &>>${LOG_FILE}
 systemctl restart mongod    &>>${LOG_FILE}
 checkStatus $?
 
