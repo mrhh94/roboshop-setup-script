@@ -24,5 +24,5 @@ curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/cat
 
 
 ECHO "Extract Application Archive"
-cd /home/roboshop && rm -rf catalogue && unzip -o /tmp/catalogue.zip && mv catalogue-main catalogue
+cd /home/roboshop && rm -rf catalogue && unzip -o /tmp/catalogue.zip && mv catalogue-main catalogue   &>>${LOG_FILE}
 checkStatus $?
