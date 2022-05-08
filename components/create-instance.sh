@@ -32,7 +32,7 @@ aws ec2 run-instances \
     --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${NAME}}]" &>>/dev/nul2.0
     echo "Successfully ${NAME} Instance Created"
 
-sleep 15
+sleep 10
 
 INSTANCE_ID=$(aws ec2 describe-instances \
     --filters Name=tag:Name,Values="${NAME}" \
@@ -46,4 +46,4 @@ sed -e "s/COMPONENT/${NAME}/" -e "s/IPADDRESS/${IPADDRESS}/" record.json >/tmp/r
 
 aws route53 change-resource-record-sets \
     --hosted-zone-id Z050212011DFLHIMYY41B \
-    --change-batch file:///tmp/record.json
+    --change-batch file:///tmp/record.json &>/dev/nul2.0
