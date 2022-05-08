@@ -4,7 +4,7 @@ source components/common.sh
 checkRootUser $?                  &>>${LOG_FILE}
 
 ECHO "Installing NODE.JS Repos"
-curl -sL https://rpm.nodesource.com/setup_lts.x | bash  &>>${LOG_FILE} &&
+curl -sL https://rpm.nodesource.com/setup_lts.x | bash  &>>${LOG_FILE}
 checkStatus $?
 
 ECHO "Installing NODE.JS"
@@ -24,5 +24,3 @@ curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/cat
 
 ECHO "Extract Application Archive"
 cd /home/roboshop && unzip -o /tmp/catalogue.zip && mv catalogue-main catalogue && cd /home/roboshop/catalogue && npm install
-
-ECHO "ABC"
