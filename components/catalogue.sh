@@ -19,12 +19,12 @@ if [ $1 -eq 0 ]; then
 fi
 
 ECHO "Download Application"
-$ curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/catalogue/archive/main.zip"    #&>>${LOG_FILE}
+curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/catalogue/archive/main.zip"    #&>>${LOG_FILE}
 
 
 ECHO "Extract Application Archive"
-$ cd /home/roboshop
-$ unzip /tmp/catalogue.zip
-$ mv catalogue-main catalogue
-$ cd /home/roboshop/catalogue
-$ npm install
+cd /home/roboshop
+unzip /tmp/catalogue.zip
+$mv catalogue-main catalogue
+cd /home/roboshop/catalogue
+npm install
