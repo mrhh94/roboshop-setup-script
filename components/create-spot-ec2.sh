@@ -37,7 +37,7 @@ INSTANCE_ID=$(aws ec2 describe-spot-instance-requests \
     --filters Name=tag:Name,Values="${NAME}" \
     --output table | grep InstanceId | awk '{print $4}')
 
-IPADDRESS=$(aws ec2 describe-instance \
+IPADDRESS=$(aws ec2 describe-instances \
     --instance-ids "${INSTANCE_ID}" \
     --output table | grep PrivateIpAddress | head -n 1 | awk '{print $4}')
 
