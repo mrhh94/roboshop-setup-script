@@ -13,7 +13,7 @@ sudo aws ec2 describe-instances \
   --output table | grep 'InstanceId' &>>/dev/nul2.0
 
 if [ $? -eq 0 ]; then
-  echo "Instance Already Exists"
+  echo " ${NAME} Instance Already Exists"
   exit 0
 fi
 
