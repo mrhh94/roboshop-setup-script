@@ -11,7 +11,7 @@ aws ec2 describe-spot-instance-requests \
     --filters Name=tag:Name,Values="${NAME}" Name=state,Values=active \
     --output table | grep InstanceId &>/dev/null
 
-if [ "$1" -eq 0 ]; then
+if [ $? -eq 0 ]; then
   echo "Instance Already Exists"
   exit 0
 fi
