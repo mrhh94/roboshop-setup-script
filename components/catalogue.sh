@@ -21,7 +21,7 @@ fi
 
 ECHO "Download Application"
 curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/catalogue/archive/main.zip"    &>>${LOG_FILE}
-
+checkStatus $?
 
 ECHO "Extract Application Archive"
 cd /home/roboshop && rm -rf catalogue && unzip -o /tmp/catalogue.zip && mv catalogue-main catalogue   &>>${LOG_FILE}
