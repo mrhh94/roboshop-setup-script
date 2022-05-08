@@ -35,4 +35,9 @@ ECHO "Updating SystemD file "
 sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' /home/roboshop/catalogue/systemd.service
 checkStatus $?
 
-
+ECHO "Setup SystemD Service"
+mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service
+systemctl daemon-reload
+systemctl start catalogue
+systemctl enable catalogue
+checkStatus $?
