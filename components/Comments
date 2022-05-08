@@ -20,3 +20,7 @@ aws ec2 describe-spot-instance-requests --filters Name=tag:Name,Values=SpotTest 
 aws ec2 describe-instances --filters Name=tag:Name,Values=SpotTest --output table | grep InstanceId | awk '{print $5}'
 
 aws ec2 describe-spot-instance-requests --filters Name=tag:Name,Values=Rafaqat --output table | grep InstanceId | awk '{print $4}'
+
+IPADDRESS=$(aws ec2 describe-instances --instance-ids i-04b3f3c23f89e988e --output table | grep PrivateIpAddress | head -n 1 | awk '{print $4}')
+
+INSTANCE_ID=$(aws ec2 describe-instances --filters Name=tag:Name,Values=catalogue --output table | grep InstanceId | awk '{print $4}')
