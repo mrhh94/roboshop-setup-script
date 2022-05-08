@@ -30,3 +30,4 @@ aws ec2 run-instances \
     --subnet-id subnet-550b0a18 \
     --security-group-ids sg-0cfbae2747cbac51a \
     --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${NAME}}]" &>>/dev/nul2.0
+    echo "Successfully Instance Created"
