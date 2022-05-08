@@ -10,7 +10,6 @@ NAME=$1
 aws ec2 describe-spot-instance-requests \
     --filters Name=tag:Name,Values="${NAME}" Name=state,Values=active \
     --output table | grep InstanceId | awk '{print $5}' &>/dev/null
-exit 0
 
 AMI_ID=$(
   aws ec2 describe-images \
