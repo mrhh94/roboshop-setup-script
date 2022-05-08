@@ -16,5 +16,3 @@ create-instance:
 mongodb:
 	@bash components/mongodb.sh
 
-MDB:
-	@bash components/MDB.sh
