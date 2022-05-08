@@ -29,3 +29,17 @@ aws ec2 run-instances \
       --security-group-ids sg-0cfbae2747cbac51a \
       --instance-market-options "MarketType=spot,SpotOptions={SpotInstanceType=persistent,InstanceInterruptionBehavior=stop}" \
       --tag-specifications "ResourceType=spot-instances-request,Tags=[{Key=Name,Value=${NAME}}]" "ResourceType=instance,Tags=[{Key=Name,Value=${NAME}}]" &>>/dev/null
+
+INSTANCE_ID=$(aws ec2 describe-spot-instance \
+    --filters Name=tag:Name,Values="${NAME}" \
+    --output table | grep InstanceId | awk '{print $4}')
+
+IPADDRESS=$(aws ec2 describe-instance-requests \
+    --instance-ids "${INSTANCE_ID}" \
+    --output table | grep PrivateIpAddress | head -n 1 | awk '{print $4}')
+
+sed -e "s/COMPONENT/${NAME}/" -e "s/IPADDRESS/${IPADDRESS}/" record.json >/tmp/record.json
+
+aws route53 change-resource-record-sets \
+    --hosted-zone-id Z050212011DFLHIMYY41B \
+    --change-batch file:///tmp/record.json &>/dev/null
