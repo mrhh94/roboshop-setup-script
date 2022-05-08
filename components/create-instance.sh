@@ -39,12 +39,11 @@ INSTANCE_ID=$(aws ec2 describe-instances \
     --output table | grep InstanceId | awk '{print $4}')
 
 IPADDRESS=$(aws ec2 describe-instances \
-    --instance-ids ${INSTANCE_ID} \
+    --instance-ids "${INSTANCE_ID}" \
     --output table | grep PrivateIpAddress | head -n 1 | awk '{print $4}')
 
-sed -e "s/COMPONENT/${NAME}/" -e "s/IPADDRESS/${IPADDRESS}" record.json >/tmp/record.json
+sed -e "s/COMPONENT/${NAME}/" -e "s/IPADDRESS/${IPADDRESS}/" record.json >/tmp/record.json
 
 aws route53 change-resource-record-sets \
     --hosted-zone-id Z050212011DFLHIMYY41B \
     --change-batch file:///tmp/record.json
-
