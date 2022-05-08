@@ -10,9 +10,8 @@ checkRootUser $?                   &>>${LOG_FILE}
 
 yum install -y mongodb-org  &>>${LOG_FILE} && systemctl enable mongod  &>>${LOG_FILE} && systemctl start mongod   &>>${LOG_FILE}
 ECHO "MongoDB Installed"
-checkRootUser $?                   &>>${LOG_FILE}
 
-ECHO"Configuring IP ADDRESS"
+ECHO "Configuring IP ADDRESS"
 sed -i 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf      &>>${LOG_FILE}
 
 ECHO "Unzipping Files"
