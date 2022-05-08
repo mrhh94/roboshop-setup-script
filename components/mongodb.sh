@@ -18,8 +18,8 @@ systemctl restart mongod            &>>${LOG_FILE}
 
 ECHO "Unzipping Files"
 curl -s -L -o /tmp/mongodb.zip "https://github.com/roboshop-devops-project/mongodb/archive/main.zip" &>>${LOG_FILE}
-cd /tmp
 
+cd /tmp
 unzip mongodb.zip   &>>${LOG_FILE}
 cd mongodb-main
 ECHO "Unzipping Successful"
