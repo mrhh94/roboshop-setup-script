@@ -29,13 +29,15 @@ aws ec2 run-instances \
       --security-group-ids sg-0cfbae2747cbac51a \
       --instance-market-options "MarketType=spot,SpotOptions={SpotInstanceType=persistent,InstanceInterruptionBehavior=stop}" \
       --tag-specifications "ResourceType=spot-instances-request,Tags=[{Key=Name,Value=${NAME}}]" "ResourceType=instance,Tags=[{Key=Name,Value=${NAME}}]" &>>/dev/null
+      echo "Successfully ${NAME} Instance Created"
+
 sleep 10
 
-INSTANCE_ID=$(aws ec2 describe-spot-instance \
+INSTANCE_ID=$(aws ec2 describe-spot-instance-requests \
     --filters Name=tag:Name,Values="${NAME}" \
     --output table | grep InstanceId | awk '{print $4}')
 
-IPADDRESS=$(aws ec2 describe-instance-requests \
+IPADDRESS=$(aws ec2 describe-instance \
     --instance-ids "${INSTANCE_ID}" \
     --output table | grep PrivateIpAddress | head -n 1 | awk '{print $4}')
 
