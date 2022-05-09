@@ -20,8 +20,14 @@ fi
 
 AMI_ID=$(aws ec2 describe-images --filters "Name=name,Values=Centos-7-DevOps-Practice" --output table  | grep ImageId | awk '{print $4}')
 
-aws ec2 run-instances --image-id ${AMI_ID} --instance-type t3.micro --instance-market-options "MarketType=spot,SpotOptions={SpotInstanceType=persistent,InstanceInterruptionBehavior=stop}" --tag-specifications "ResourceType=spot-instances-request,Tags=[{Key=Name,Value=${NAME}}]" "ResourceType=instance,Tags=[{Key=Name,Value=${NAME}}]" --security-group-ids sg-052da698a233eaebe &>/dev/null
-echo EC2 Instance Created
+aws ec2 run-instances \
+    --image-id "${AMI_ID}" \
+    --instance-type t2.micro \
+    --count 1 \
+    --subnet-id subnet-550b0a18 \
+    --security-group-ids sg-0cfbae2747cbac51a \
+    --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${NAME}}]" &>>/dev/nul2.0
+    echo "Successfully ${NAME} Instance Created"echo EC2 Instance Created
 
 sleep 30
 INSTANCE_ID=$(aws ec2 describe-spot-instance-requests --filters Name=tag:Name,Values=${NAME} Name=state,Values=active --output table | grep InstanceId | awk '{print $4}')
