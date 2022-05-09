@@ -36,9 +36,9 @@ checkStatus $?
 
 ECHO "Setup SystemD Service"
 mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service
-systemctl daemon-reload
-systemctl start catalogue
-systemctl enable catalogue
+systemctl daemon-reload       &>>${LOG_FILE}
+systemctl start catalogue     &>>${LOG_FILE}
+systemctl enable catalogue    &>>${LOG_FILE}
 checkStatus $?
 
 
