@@ -16,7 +16,6 @@ if [ $? -ne 0 ]; then
   ECHO "Add Application User"
   useradd roboshop    &>>${LOG_FILE}
   checkStatus $?
-  exit 0
 fi
 
 ECHO "Download Application"
