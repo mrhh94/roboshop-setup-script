@@ -27,7 +27,7 @@ aws ec2 run-instances \
     --subnet-id subnet-550b0a18 \
     --security-group-ids sg-0cfbae2747cbac51a \
     --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${NAME}}]" &>>/dev/nul2.0
-    echo "Successfully ${NAME} Instance Created"echo EC2 Instance Created
+    echo "Successfully ${NAME} Instance Created"
 
 sleep 30
 INSTANCE_ID=$(aws ec2 describe-spot-instance-requests --filters Name=tag:Name,Values=${NAME} Name=state,Values=active --output table | grep InstanceId | awk '{print $4}')
