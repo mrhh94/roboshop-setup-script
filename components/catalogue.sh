@@ -41,3 +41,5 @@ systemctl daemon-reload
 systemctl start catalogue
 systemctl enable catalogue
 checkStatus $?
+
+
