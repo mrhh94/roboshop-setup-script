@@ -30,4 +30,3 @@ checkRootUser $?                  &>>${LOG_FILE}
  systemctl enable nginx   &>>${LOG_FILE}    && systemctl start nginx    &>>${LOG_FILE} &&   systemctl restart nginx   &>>${LOG_FILE}
  checkStatus $?
 
- 
